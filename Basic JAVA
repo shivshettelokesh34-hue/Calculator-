@@ -1,0 +1,28 @@
+package com.example.calculatorapp;
+
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    TextView display;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        display = findViewById(R.id.display);
+
+        Button btn1 = findViewById(R.id.btn1);
+        Button btn2 = findViewById(R.id.btn2);
+        Button btn3 = findViewById(R.id.btn3);
+
+        btn1.setOnClickListener(v -> display.setText("1"));
+        btn2.setOnClickListener(v -> display.setText("2"));
+        btn3.setOnClickListener(v -> display.setText("3"));
+    }
+}

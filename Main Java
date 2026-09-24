@@ -1,0 +1,54 @@
+package com.example.calculatorapp;
+
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    TextView display;
+    double firstNumber = 0;
+    String operator = "";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        display = findViewById(R.id.display);
+
+        int[] numbers = {
+                R.id.btn0, R.id.btn1, R.id.btn2,
+                R.id.btn3, R.id.btn4, R.id.btn5,
+                R.id.btn6, R.id.btn7, R.id.btn8,
+                R.id.btn9
+        };
+
+        for (int id : numbers) {
+            Button button = findViewById(id);
+
+            button.setOnClickListener(v -> {
+                String value = button.getText().toString();
+
+                if (display.getText().toString().equals("0")) {
+                    display.setText(value);
+                } else {
+                    display.append(value);
+                }
+            });
+        }
+
+        findViewById(R.id.btnPlus).setOnClickListener(v -> setOperator("+"));
+        findViewById(R.id.btnMinus).setOnClickListener(v -> setOperator("-"));
+        findViewById(R.id.btnMultiply).setOnClickListener(v -> setOperator("*"));
+        findViewById(R.id.btnDivide).setOnClickListener(v -> setOperator("/"));
+    }
+
+    void setOperator(String op) {
+        firstNumber = Double.parseDouble(display.getText().toString());
+        operator = op;
+        display.setText("0");
+    }
+}

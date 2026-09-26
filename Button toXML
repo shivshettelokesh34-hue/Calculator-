@@ -1,0 +1,3 @@
+<Button
+    android:id="@+id/btnEqual"
+    android:text="=" />

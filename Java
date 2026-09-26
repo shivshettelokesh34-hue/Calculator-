@@ -1,0 +1,1 @@
+findViewById(R.id.btnEqual).setOnClickListener(v -> calculate());
